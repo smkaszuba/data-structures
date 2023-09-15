@@ -9,9 +9,6 @@ public class ListDemo
 {
     public static void main(String[] args)
     {
-<<<<<<< Updated upstream
-        
-=======
 
         // The addLast method can be used to populate a list
         LinkedList<String> staff = new LinkedList<>();
@@ -90,8 +87,15 @@ public class ListDemo
                 //staff.remove("Diana");
             }
         }
+
+        /* ConcurrentModificationException
         
+        An enhanced for loop AUTOMATICALLY creates an iterator! */
+        for (String n: staff) {
+            if(n.equals("Harry")) {
+               // staff.add("Charlie");
+            }
+        }
     
->>>>>>> Stashed changes
     }
 }
