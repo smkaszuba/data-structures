@@ -36,10 +36,33 @@ public class SudokuSolver {
         }
 
         // create the list of sets for each row (this.rows)
-        // ...
+        this.rows = new ArrayList<>();
+        this.nums = new HashSet<>();
+      
+        for (int[] row : this.grid)
+        {
+          for (int num: row)
+          {
+            this.nums.add(num);
+          }
+          
+          this.rows.add(nums);
+          this.nums.clear();
+        }
 
         // create the list of sets for each col (this.cols)
-        // ...
+        this.cols = new ArrayList<>();
+
+        for (int i = 0; i < 9; i++)
+        {
+          for (int j = 0; j < 9; j++)
+          {
+            this.nums.add(this.grid[i][j]);
+          }
+          
+          this.cols.add(nums);
+          this.nums.clear();
+        }
 
         // create the list of sets for each square (this.squares)
         /* the squares are added to the list row-by-row:
@@ -47,10 +70,32 @@ public class SudokuSolver {
             3 4 5
             6 7 8
          */
-        // ...
+        this.squares = new ArrayList<>();
+
+        for (int i = 0; i < 6; i += 3)
+        {
+          for (int j = 0; j < 6; j += 3)
+          {
+            this.nums.add(this.grid[i][j]);
+            this.nums.add(this.grid[i][j + 1]);
+            this.nums.add(this.grid[i][j + 2]);
+
+            this.nums.add(this.grid[i + 1][j]);
+            this.nums.add(this.grid[i + 1][j + 1]);
+            this.nums.add(this.grid[i + 1][j + 2]);
+
+            this.nums.add(this.grid[i + 2][j]);
+            this.nums.add(this.grid[i + 2][j + 1]);
+            this.nums.add(this.grid[i + 2][j + 2]);
+          }
+          
+          this.squares.add(nums);
+          this.nums.clear();
+        }
 
         // create a hash set for [1..9] (this.nums)
-        // ...
+        for (int i = 0; i < 10; i++)
+          this.nums.add(i);
 
         // visually inspect that all the sets are correct
         for (int row = 0; row < N; row++) {
