@@ -36,21 +36,29 @@ public class SudokuSolver {
         }
 
         // create the list of sets for each row (this.rows)
-        // ...
+        for (int[] row : this.grid) {
+            for (int num : row) {
+                this.nums.add(num);
+                System.out.print(nums);
+            }
+
+            this.rows.add(nums);
+            this.nums.clear();
+        }
 
         // create the list of sets for each col (this.cols)
-        // ...
 
         // create the list of sets for each square (this.squares)
-        /* the squares are added to the list row-by-row:
-            0 1 2
-            3 4 5
-            6 7 8
+        /*
+         * the squares are added to the list row-by-row:
+         * 0 1 2
+         * 3 4 5
+         * 6 7 8
          */
-        // ...
 
         // create a hash set for [1..9] (this.nums)
-        // ...
+        for (int i = 0; i < 10; i++)
+            this.nums.add(i);
 
         // visually inspect that all the sets are correct
         for (int row = 0; row < N; row++) {
@@ -87,19 +95,20 @@ public class SudokuSolver {
 
         // get all possible numbers for the row and column we are trying to populate
         /*
-            Create a new set based on the this.nums and remove all elements in the sets
-            corresponding to nextRow, nextCol, and the corresponding square (use the
-            removeAll method).
-
-            Properly indexing the squares list of sets is tricky. Verify that your
-            algorithm is correct.
+         * Create a new set based on the this.nums and remove all elements in the sets
+         * corresponding to nextRow, nextCol, and the corresponding square (use the
+         * removeAll method).
+         * 
+         * Properly indexing the squares list of sets is tricky. Verify that your
+         * algorithm is correct.
          */
         Set<Integer> possibleNums = new HashSet<Integer>();
         possibleNums.addAll(this.nums);
-        
+
         // ...
 
-        // if there are no possible numbers, we cannot solve the board in its current state
+        // if there are no possible numbers, we cannot solve the board in its current
+        // state
         if (possibleNums.isEmpty()) {
             return false;
         }
@@ -115,9 +124,11 @@ public class SudokuSolver {
                 return true;
             } else {
                 /*
-                 Undo the move before trying another possible number by setting the corresponding
-                 element in the grid back to 0 and removing possibleNum from all three corresponding
-                 sets.
+                 * Undo the move before trying another possible number by setting the
+                 * corresponding
+                 * element in the grid back to 0 and removing possibleNum from all three
+                 * corresponding
+                 * sets.
                  */
                 // ...
             }
