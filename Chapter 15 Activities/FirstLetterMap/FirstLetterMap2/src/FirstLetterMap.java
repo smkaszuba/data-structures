@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+
 /**
  * Read all words from a file and add them to a map
  * whose keys are the first letters of the words and
@@ -7,9 +8,8 @@ import java.io.*;
  * that same letter. Then print out the word sets in
  * alphabetical order. Update the map by modifying
  * Worked Example 15.1.
-*/
-public class FirstLetterMap
-{
+ */
+public class FirstLetterMap {
     public static void main(String[] args)
     {
         String filename = "src/test1.txt";
@@ -27,7 +27,10 @@ public class FirstLetterMap
 
                 // Update the map here
                 // Modify Worked Example 15.1
-                . . .
+                if (lengthMap.containsKey(word))
+                    lengthMap.put(len, lengthMap.get(len) + "," + word);
+                else
+                    lengthMap.put(len, word);
 
 
             }
@@ -41,14 +44,11 @@ public class FirstLetterMap
         }
     }
 
-    public static String clean(String s)
-    {
+    public static String clean(String s) {
         String r = "";
-        for (int i = 0; i < s.length(); i++)
-        {
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if (Character.isLetter(c))
-            {
+            if (Character.isLetter(c)) {
                 r = r + c;
             }
         }
