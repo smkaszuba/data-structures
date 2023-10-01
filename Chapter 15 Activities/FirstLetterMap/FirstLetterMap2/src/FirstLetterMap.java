@@ -34,10 +34,11 @@ public class FirstLetterMap {
 
 
             }
-
-            // Print the map here in this form
-            // a: [a, able, aardvark]
-            . . .
+            
+            // Print the strings, in increasing order of their length
+            // Use this format: 1: i, a, i
+            for (Integer len : lengthMap.keySet())
+                System.out.println(len + ": " + lengthMap.get(len));
         } catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);
