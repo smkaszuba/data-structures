@@ -26,9 +26,18 @@ public class FirstLetterMap {
                 Character c = word.charAt(0);
 
                 // Update the map here
-                // Use the Java 8 merge method
-                
+                // Modify Worked Example 15.1
+                if (lengthMap.containsKey(len))
+                    lengthMap.put(len, lengthMap.get(len) + "," + word);
+                else
+                    lengthMap.put(len, word);
 
+            }
+
+            // Print the strings, in increasing order of their length
+            // Use this format: 1: i, a, i
+            for (Integer len : lengthMap.keySet())
+                System.out.println(len + ": " + lengthMap.get(len));
             }
 
             // Print the map here in this form
