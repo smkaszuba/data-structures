@@ -9,7 +9,20 @@ public class StackDemo {
     public static void main(String[] args) {
         Stack<String> stack = new Stack<>();
 
-        stack.push("Insert: 'hello'");
+        stack.push("Insert: 'Hello'");
+        stack.push("Insert: ','");
+        stack.push("Insert: ' '");
+        stack.push("Insert: 'World'");
+        stack.push("Insert: '?'");
+        stack.push("Delete: '?'");
+        stack.push("Insert: '!'");
+
+        System.out.print(stack);
+
+        stack.pop();
+        stack.pop();
+        stack.pop();
+        stack.pop();
 
         System.out.print(stack);
     }
