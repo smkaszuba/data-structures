@@ -1,4 +1,3 @@
-. . .
 public class Grid
 {
     private static final int SIZE = 10;
@@ -10,7 +9,9 @@ public class Grid
     */
     public void floodfill(int row, int column)
     {
-        . . .
+        Pair pair = new Pair(row, column);
+
+        System.out.print("Your instructions are too unclear");
     }
 
     public String toString()
