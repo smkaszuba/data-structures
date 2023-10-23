@@ -104,6 +104,7 @@ public class LinkedList {
          * 
          * @param element the element to set
          */
+        return data.next==null;
 
     }// LinkedListIterator
 }// LinkedList
