@@ -3,25 +3,22 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 
-public class MorseCode
-{
+public class MorseCode {
     private static final char DOT = '.';
     private static final char DASH = '-';
 
     private static TreeMap<Character, String> codeMap;
     private static TreeNode decodeTree;
 
-    public static void main(String[] args)
-    {
-        MorseCode.start();  
+    public static void main(String[] args) {
+        MorseCode.start();
         System.out.println(MorseCode.encode("Watson come here"));
         BTreePrinter.printNode(decodeTree);
     }
 
-    public static void start()
-    {
+    public static void start() {
         codeMap = new TreeMap<Character, String>();
-        decodeTree = new TreeNode(' ', null, null);  // autoboxing
+        decodeTree = new TreeNode(' ', null, null); // autoboxing
         // put a space in the root of the decoding tree
 
         addSymbol('A', ".-");
@@ -69,57 +66,53 @@ public class MorseCode
      * Inserts a letter and its Morse code string into the encoding map
      * and calls treeInsert to insert them into the decoding tree.
      */
-    private static void addSymbol(char letter, String code)
-    {
-        /*
-            !!! INSERT CODE HERE
-        */
+    private static void addSymbol(char letter, String code) {
+        codeMap.put(letter, code);
     }
 
     /**
      * Inserts a letter and its Morse code string into the
-     * decoding tree.  Each dot-dash string corresponds to a path
+     * decoding tree. Each dot-dash string corresponds to a path
      * in the tree from the root to a node: at a "dot" go left, at a "dash" go
-     * right.  The node at the end of the path holds the symbol
+     * right. The node at the end of the path holds the symbol
      * for that code string.
      */
-    private static void treeInsert(char letter, String code)
-    {
-        /*
-            !!! INSERT CODE HERE
-        */
+    private static void treeInsert(char letter, String code) {
+        newNode = new TreeNode();
+        while (decodeTree.getLeft() != null && decodeTree.getRight() != null) {
+
+        }
+
     }
 
     /**
-     * Converts text into a Morse code message.  Adds a space after a dot-dash
-     * sequence for each letter.  Other spaces in the text are transferred directly
+     * Converts text into a Morse code message. Adds a space after a dot-dash
+     * sequence for each letter. Other spaces in the text are transferred directly
      * into the encoded message.
      * Returns the encoded message.
      */
-    public static String encode(String text)
-    {
+    public static String encode(String text) {
         StringBuffer morse = new StringBuffer(400);
 
         /*
-            !!! INSERT CODE HERE
-        */
+         * !!! INSERT CODE HERE
+         */
 
         return morse.toString();
     }
 
     /**
-     * Converts a Morse code message into a text string.  Assumes that dot-dash
-     * sequences for each letter are separated by one space.  Additional spaces are
+     * Converts a Morse code message into a text string. Assumes that dot-dash
+     * sequences for each letter are separated by one space. Additional spaces are
      * transferred directly into text.
      * Returns the plain text message.
      */
-    public static String decode(String morse)
-    {
+    public static String decode(String morse) {
         StringBuffer text = new StringBuffer(100);
 
         /*
-            !!! INSERT CODE HERE
-        */
+         * !!! INSERT CODE HERE
+         */
 
         return text.toString();
     }
@@ -201,8 +194,8 @@ class BTreePrinter {
         if (node == null)
             return 0;
 
-        return Math.max(BTreePrinter.maxLevel(node.getLeft()), 
-            BTreePrinter.maxLevel(node.getRight())) + 1;
+        return Math.max(BTreePrinter.maxLevel(node.getLeft()),
+                BTreePrinter.maxLevel(node.getRight())) + 1;
     }
 
     private static <T> boolean isAllElementsNull(List<T> list) {
@@ -214,4 +207,3 @@ class BTreePrinter {
         return true;
     }
 }
-
