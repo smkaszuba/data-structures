@@ -1,7 +1,4 @@
-import java.util.TreeMap;
-import java.util.Collections;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 public class MorseCode {
     private static final char DOT = '.';
@@ -68,6 +65,7 @@ public class MorseCode {
      */
     private static void addSymbol(char letter, String code) {
         codeMap.put(letter, code);
+        treeInsert(letter, code);
     }
 
     /**
@@ -78,11 +76,21 @@ public class MorseCode {
      * for that code string.
      */
     private static void treeInsert(char letter, String code) {
-        newNode = new TreeNode();
-        while (decodeTree.getLeft() != null && decodeTree.getRight() != null) {
-
+        TreeNode n = decodeTree;
+        for(int i = 0; i < code.length(); i++){
+            if(code.charAt(i) == DOT){
+                if(n.getLeft() == null){
+                    n.setLeft(new TreeNode(null));
+                }
+                n = n.getLeft();
+            } else {
+                if(n.getRight() == null){
+                    n.setRight(new TreeNode(null));
+                }
+                n = n.getRight();
+            }
         }
-
+        n.setValue(letter);
     }
 
     /**
@@ -92,12 +100,19 @@ public class MorseCode {
      * Returns the encoded message.
      */
     public static String encode(String text) {
-        StringBuffer morse = new StringBuffer(400);
-
-        /*
-         * !!! INSERT CODE HERE
-         */
-
+        StringBuffer morse = new StringBuffer(6*text.length());
+        String letter;
+        for(int i = 0; i < text.length(); i++){
+            if(text.charAt(i) == ' '){
+                morse.append(" ");
+            }
+            letter = codeMap.get(text.toUpperCase().charAt(i)) + " ";
+            if(letter.equals("null ")){
+                letter = "  ";
+            }
+            morse.append(letter);
+        }
+        
         return morse.toString();
     }
 
@@ -108,12 +123,26 @@ public class MorseCode {
      * Returns the plain text message.
      */
     public static String decode(String morse) {
-        StringBuffer text = new StringBuffer(100);
+        StringBuffer text = new StringBuffer(1 + morse.length()/6);
+        String letter = "";
 
-        /*
-         * !!! INSERT CODE HERE
-         */
-
+        for(int i = 0; i < morse.length(); i++){
+            if(morse.charAt(i) == ' '){
+                for(Character key : codeMap.keySet()){
+                    if(codeMap.get(key).equals(letter)){
+                        text.append(key);
+                    }
+                }
+                if(i + 1 < morse.length() && morse.charAt(i + 1) == ' '){
+                    text.append(" ");
+                    i++;
+                }
+                letter = "";
+                continue;
+            }
+            letter += morse.charAt(i);
+        }
+        
         return text.toString();
     }
 }
